@@ -11,7 +11,7 @@ const verifyToken = require('../middlewares/auth');
 const registerController = require('../controllers/RegisterController');
 
 //import login controller
-const loginController = require('../controllers/LoginConroller');
+const loginController = require('../controllers/LoginController');
 
 //import user controller
 const userController = require('../controllers/UserController');
@@ -33,6 +33,9 @@ router.get('/admin/users', verifyToken, userController.findUsers);
 
 //define route for user create
 router.post('/admin/users', verifyToken, validateUser, userController.createUser);
+
+//define route for user by id
+router.get('/admin/users/:id', verifyToken, userController.findUserById);
 
 //export router
 module.exports = router
